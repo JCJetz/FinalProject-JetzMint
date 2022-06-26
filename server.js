@@ -213,17 +213,11 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname + "/client/build/index.html"));
   })
 }
+const options = {
+  key: fs.readFileSync('./localhost-key.pem'),
+  cert: fs.readFileSync('./localhost.pem'),
+};
 
-if (process.env.NODE_ENV !== "production") {
-
-  https.createServer(options, app).listen(port, () => {
-    console.log('Https API listening on port ' + port);
-  });
-
-} else {
-
-  app.listen(process.env.PORT, function () {
-    console.log('api listening on port: ' + port);
-  });
-
-}
+https.createServer(app).listen(port, () => {
+  console.log('Https API listening on port ' + port);
+});

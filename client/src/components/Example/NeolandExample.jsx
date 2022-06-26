@@ -45,7 +45,7 @@ function NeolandExample() {
     //const authAPI = process.env.REACT_APP_AUTH_API_URL;
     // Mandamos oauth de slack al backend
     console.log('Trying to fetch from backend..');
-    fetch(process.env.REACT_APP_AUTH_API_URL, {
+    fetch("/api/auth/login/success", {
       method: "GET",
       credentials: "include",
       headers: {

@@ -20,24 +20,11 @@ function SlackOauth (props) {
     // Open Slack login page
     // Send a cookie back with user data
     event.preventDefault();
-    //console.log('location: ', window.location);
-    //console.log("href split: ", window.location.href.split('neoland-bootcamp')[0]);
-    //window.location.href = "auth/slack";
-    if (process.env.NODE_ENV === "production") {
-      window.open(window.location.href.split('neoland-bootcamp')[0] + "auth/slack", "_self");
-    } else {
-      window.open(process.env.REACT_APP_LOGIN_API_URL, "_self");
-    }
+    window.open("/api/auth/slack", "_self");
   };
 
   function _handleLogoutClick () {
-    // Logout using Slack passport api
-    // Set authenticated state to false in the Example Mint component
-    if (process.env.NODE_ENV === "production") {
-      window.open(window.location.href.split('neoland-bootcamp')[0] + "auth/logout", "_self");
-    } else {
-      window.open(process.env.REACT_APP_LOGOFF_API_URL, "_self");
-    }
+    window.open("/api/auth/logout", "_self");
   };
   
   
