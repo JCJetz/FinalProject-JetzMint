@@ -21,3 +21,4 @@ localhost.pem
 /client/.env
 .env
 /stuff
+logfile.log
