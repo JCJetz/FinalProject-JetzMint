@@ -229,6 +229,16 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-https.createServer(options, app).listen(port, () => {
-  console.log('Https API listening on port ' + port);
-});
+if (process.env.NODE_ENV !== "production") {
+
+  https.createServer(options, app).listen(port, () => {
+    console.log('Https API listening on port ' + port);
+  });
+
+} else {
+
+  app.listen(process.env.PORT, function () {
+    console.log('api listening on port: ' + port);
+  });
+
+}
