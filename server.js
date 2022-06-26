@@ -6,6 +6,28 @@ import util from 'util';
 import path from 'path';
 import 'dotenv/config';
 
+import cookieSession from "cookie-session";
+import express from 'express';
+const app = express();
+//const port = 4000;
+const port = process.env.PORT || 5000;
+import passport from 'passport';
+// Esto no puedo dividirlo e importarlo
+//import passportSetup from './config/passport-setup.js';
+import session from 'express-session';
+import {router as authRoutes} from "./routes/auth-routes.js";
+import mongoose from "mongoose";
+import { MONGODB,SESSION } from "./config/keys.js";
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+
+//import SlackStrategy from "passport-slack"; Esto en dos partes, St y luego Strategy
+import St from "passport-slack-oauth2";
+const SlackStrategy = St.Strategy;
+
+import { SLACK_TOKENS } from "./config/keys.js";
+import User from "./models/user-model.js";
+
 import winston from 'winston';
 
 // Info Logger
@@ -27,40 +49,8 @@ const errorlogger = winston.createLogger({
   ]
 });
 
-
-import cookieSession from "cookie-session";
-import express from 'express';
-
-const app = express();
-//const port = 4000;
-const port = process.env.PORT || 5000;
-import passport from 'passport';
-// Esto no puedo dividirlo e importarlo
-//import passportSetup from './config/passport-setup.js';
-import session from 'express-session';
-import {router as authRoutes} from "./routes/auth-routes.js";
-import mongoose from "mongoose";
-import { MONGODB,SESSION } from "./config/keys.js";
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-
-//import SlackStrategy from "passport-slack"; Esto en dos partes, St y luego Strategy
-import St from "passport-slack-oauth2";
-const SlackStrategy = St.Strategy;
-
-import { SLACK_TOKENS } from "./config/keys.js";
-import User from "./models/user-model.js";
-
-// production build routes 
-/*
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-app.use(express.static(path.join(__dirname, 'build')));
-*/
-
-const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.tsuyqql.mongodb.net/NFTProject?retryWrites=true&w=majority`;
 export const connectToMongo = async() => {
-  await mongoose.connect(MONGODB_URI, {
+  await mongoose.connect(MONGODB.MONGODB_URI, {
   });
   return mongoose;
 };
