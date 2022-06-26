@@ -164,7 +164,7 @@ function NeolandExample() {
 
                           <div className="card z-depth-3 rounded-xl overflow-hidden">
 
-                            <MintTitle />
+                            <MintTitle userstate={userstate} />
                             <Requisitos />
                             <StatusMessage userstate={userstate}
                             isCorrectNetwork={isCorrectNetwork}

@@ -122,10 +122,7 @@ router.get("/mintstatus", (req, res) => {
 
 // when login failed, send failed msg
 router.get("/login/failed", (req, res) => {
-  res.status(401).json({
-    success: false,
-    message: "user failed to authenticate."
-  });
+  res.redirect(CLIENT_HOME_PAGE_URL);
 });
 
 // When logout, redirect to client

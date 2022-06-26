@@ -1,5 +1,9 @@
-export default function MintTitle () {
+export default function MintTitle (props) {
 
+    let mtype = "success"
+    let text = "Disponible"
+    if (props.userstate?.user?.alreadyMinted) {mtype="danger"; text="no disponible"}
+    
     return (
         <>
 
@@ -7,7 +11,7 @@ export default function MintTitle () {
                     <div className="row align-items-center mx-n3">
                         <div className="col-xl-9 col-lg-8">
                             <div className="heading heading-3 mb-2 d-block">
-                                NFT<span className="text-success"> disponible</span>
+                                NFT<span className={`text-${mtype}`}> {text}</span>
                             </div>
                             <div className="heading heading-7 d-block">
                                 Emisor: <span className="text-warning"> NEOLAND</span>

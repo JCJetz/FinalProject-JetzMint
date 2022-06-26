@@ -30,6 +30,14 @@ export default function InfoPanels (props) {
     }
 
     const extension = status !== "minteado" ? ".png" : ".gif";
+    let nftnum = "";
+
+    if (props.authenticated && props.mintData.nft) {
+        let hex = null;
+        hex = props?.mintData?.nft?.metadata?.id?._hex ? props?.mintData?.nft?.metadata?.id?._hex : props?.nft?.metadata?.id?.hex
+        console.log('hex: ',hex);
+        nftnum = hex ? parseInt(hex, 16)+1 : nftnum
+    }
 
     const paneldata = [
         {cardtype:"oauth",
@@ -63,7 +71,7 @@ export default function InfoPanels (props) {
             extratext:"Más infomación sobre el mint delegado y los contratos compartidos de thirdweb."}
         
         , {cardtype:"minteado",
-            header:`Transacción completada. Tienes el NFT ${parseInt(props.mintData?.nft?.metadata.id._hex)+1} de 100`,
+            header:`Transacción completada. Tienes el NFT ${nftnum} de 100`,
             title:"Tu NFT aparecerá automáticamente en tu billetera y en Opensea", 
             text:['El NFT incluirá tu ID alfanumérico de Slack como único detalle identificativo','También incluirá la numeración de tu NFT dentro de los 100 disponibles','No podrás venderlo ni transferirlo. Tu NFT no es especulativo, así que aunque el diseño es precioso, no podrás venderlo. Representa una actividad, y puede darte acceso a comunidades, descuentos, oportunidades, eventos.. dentro o fuera de la Web3.'],
             extratext:"Más infomación sobre el mint delegado y los contratos compartidos de thirdweb."}
