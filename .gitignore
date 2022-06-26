@@ -16,5 +16,8 @@
 npm-debug.log*
 localhost-key.pem
 localhost.pem
+/client/localhost-key.pem
+/client/localhost.pem
+/client/.env
 .env
 /stuff

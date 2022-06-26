@@ -99,7 +99,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new SlackStrategy({
   clientID: SLACK_TOKENS.SLACK_CLIENT_ID,
   clientSecret: SLACK_TOKENS.SLACK_CLIENT_SECRET,
-  callbackURL: "/auth/slack/redirect",
+  callbackURL: "/api/auth/slack/redirect",
   skipUserProfile: false, // default
   scope: ['identity.basic', 'identity.avatar', 'identity.team'], // default
   approvalPrompt: 'force'
@@ -188,8 +188,10 @@ app.get('/ping', (req, res) => {
 
 
 // set up routes
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 
+
+// checkeo si logeado en visita a página principal
 const authCheck = (req, res, next) => {
     if (!req.user) {
       res.status(401).json({
@@ -218,12 +220,12 @@ if (process.env.NODE_ENV === "production") {
   logger.info("SERVING IN PRODUCTION"); 
   
   const __dirname = path.dirname(new URL(import.meta.url).pathname);
-  winston.log('info', '-------Production Build!------------', { dirname: path.join(__dirname, '../', 'build')})
+  //logger.info('info', { dirname: path.join(__dirname, '../', 'build')})
 
-  app.use(express.static(path.join(__dirname, '../', 'build')))
+  app.use(express.static("client/build"))
   
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
   })
 }
 

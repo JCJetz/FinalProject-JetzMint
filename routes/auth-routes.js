@@ -23,12 +23,12 @@ router.get('/*', function (req, res) {
 });
 */
 
-router.get('/api/pingauth', (req, res) => {
+router.get('/pingauth', (req, res) => {
   res.send('Pong? desde auth routes');
 });
 
 // when login is successful, retrieve user info
-router.get("/api//login/success", (req, res) => {
+router.get("/login/success", (req, res) => {
   console.log('req user from frontend?: ', req.user ? req.user.name : 'Not logged in');
   if (req.user) {
     res.json({
@@ -47,7 +47,7 @@ router.get("/api//login/success", (req, res) => {
   }
 });
 
-router.post("/api/mintNFT", (req, res) => {
+router.post("/mintNFT", (req, res) => {
   console.log('address add request from frontend?:  ', req.body?.address ? req.body.address : 'No address in requests\'s body');
   if (req.user && req.body?.address) {
 
@@ -96,7 +96,7 @@ async function finishedMinting (tx) {
 
 
 // ruta chekeo de estado de mint
-router.get("/api/mintstatus", (req, res) => {
+router.get("/mintstatus", (req, res) => {
   console.log('req user from frontend?:  ', req.tx ? req.tx : 'No hay tx en request');
   if (req.user && req.tx) {
     finishedMinting(req.tx).then(async(nft) => {
@@ -121,7 +121,7 @@ router.get("/api/mintstatus", (req, res) => {
 });
 
 // when login failed, send failed msg
-router.get("/api/login/failed", (req, res) => {
+router.get("/login/failed", (req, res) => {
   res.status(401).json({
     success: false,
     message: "user failed to authenticate."
@@ -129,16 +129,16 @@ router.get("/api/login/failed", (req, res) => {
 });
 
 // When logout, redirect to client
-router.get("/api/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect(CLIENT_HOME_PAGE_URL);
 });
 
-router.get('/api/slack', passport.authenticate('Slack'));
+router.get('/slack', passport.authenticate('Slack'));
 
-router.get('/api/slack/redirect',
-  passport.authenticate('Slack', { failureRedirect: '/api/login/failed', successRedirect: CLIENT_HOME_PAGE_URL }),
-  (req, res) => res.redirect('/api/login/success') // Successful authentication, redirect home.
+router.get('/slack/redirect',
+  passport.authenticate('Slack', { failureRedirect: '/login/failed', successRedirect: CLIENT_HOME_PAGE_URL }),
+  (req, res) => res.redirect('/login/success') // Successful authentication, redirect home.
 );
 
 //module.exports = router;
