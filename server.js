@@ -1,4 +1,6 @@
 //esto es el punto de entrada para todos los puntos finales del servidor
+import https from 'https'
+import http from 'http'
 import fs from 'fs'
 import util from 'util';
 import path from 'path';
@@ -28,11 +30,6 @@ const errorlogger = winston.createLogger({
 
 import cookieSession from "cookie-session";
 import express from 'express';
-
-const options = {
-  key: fs.readFileSync('./localhost-key.pem'),
-  cert: fs.readFileSync('./localhost.pem'),
-};
 
 const app = express();
 //const port = 4000;
@@ -227,6 +224,16 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-app.listen(process.env.PORT, function () {
-  console.log('api listening on port: ' + port);
-});
+if (process.env.NODE_ENV !== "production") {
+
+  https.createServer(options, app).listen(port, () => {
+    console.log('Https API listening on port ' + port);
+  });
+
+} else {
+
+  app.listen(process.env.PORT, function () {
+    console.log('api listening on port: ' + port);
+  });
+
+}
