@@ -8,7 +8,7 @@ export default async function sendEthAddressAndMint (mintaddress,setUserstate,us
 
       console.log('Sending mint address to backend/mongo')
 
-      fetch("/auth/mintNFT", {
+      fetch("/api/auth/mintNFT", {
         method: "POST",
         credentials: "include",
         headers: {

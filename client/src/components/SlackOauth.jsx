@@ -20,15 +20,17 @@ function SlackOauth (props) {
     // Open Slack login page
     // Send a cookie back with user data
     event.preventDefault();
-    window.open("/api/auth/slack", "_self");
+    let authroute = process.env.NODE_ENV === "production" ? "/api/auth/slack" : "https://localhost:5000/api/auth/slack"
+    window.open(authroute, "_self");
+
   };
 
   function _handleLogoutClick () {
-    window.open("/api/auth/logout", "_self");
-  };
-  
-  
-
+      // Logout using Slack passport api
+      // Set authenticated state to false in the Example Mint component
+      let logoutroute = process.env.NODE_ENV === "production" ? "/api/auth/logout" : "https://localhost:5000/api/auth/logout";
+      window.open(logoutroute, "_self");
+  }
 
   return (
     <>
