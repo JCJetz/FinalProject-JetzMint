@@ -38,7 +38,7 @@ router.get("/login/success", (req, res) => {
       cookies: req.cookies
     });
   } else {
-    console.log('401 ruta backend');
+    console.log('401 desde backend');
     res.status(401).json({
       success: false,
       message: "user didn't authenticate successfully",

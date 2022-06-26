@@ -85,6 +85,7 @@ passport.use(new SlackStrategy({
   clientID: SLACK_TOKENS.SLACK_CLIENT_ID,
   clientSecret: SLACK_TOKENS.SLACK_CLIENT_SECRET,
   callbackURL: "/api/auth/slack/redirect",
+  proxy: true,
   skipUserProfile: false, // default
   scope: ['identity.basic', 'identity.avatar', 'identity.team'], // default
   approvalPrompt: 'force'
