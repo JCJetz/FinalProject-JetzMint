@@ -80,7 +80,7 @@ function NeolandExample() {
         setHasLoaded(true);
     })
     .catch(error => {
-        console.log('fetch error: ', error)
+        //console.log('fetch error: ', error)
         // Oauth fallida, seteando como no authed
         setUserstate({
           authenticated: false,
