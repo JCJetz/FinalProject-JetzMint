@@ -1,6 +1,4 @@
 //esto es el punto de entrada para todos los puntos finales del servidor
-import https from 'https'
-import http from 'http'
 import fs from 'fs'
 import util from 'util';
 import path from 'path';
@@ -229,16 +227,6 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-if (process.env.NODE_ENV !== "production") {
-
-  https.createServer(options, app).listen(port, () => {
-    console.log('Https API listening on port ' + port);
-  });
-
-} else {
-
-  app.listen(process.env.PORT, function () {
-    console.log('api listening on port: ' + port);
-  });
-
-}
+app.listen(process.env.PORT, function () {
+  console.log('api listening on port: ' + port);
+});
