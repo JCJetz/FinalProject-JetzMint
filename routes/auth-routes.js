@@ -6,29 +6,19 @@ import {connectToMongo} from '../server.js'
 import bodyParser from 'body-parser';
 import User from "../models/user-model.js";
 import mintToAddress from '../config/mintToAddress.js'
-import path from 'node:path';
 import 'dotenv/config';
 
 const CLIENT_HOME_PAGE_URL = process.env.CLIENT_HOME_PAGE_URL;
 
-// para poder parsear body del post a addaddress
+// para poder parsear body del post a addaddress !!!!!!!!!!!!!
 router.use(bodyParser.json());
-
-// Production test
-/*
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-router.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-*/
 
 router.get('/pingauth', (req, res) => {
   res.send('Pong? desde auth routes');
 });
 
 // when login is successful, retrieve user info
-router.get("/login/success", (req, res) => {
+router.get("/login/status", (req, res) => {
   console.log('req user from frontend?: ', req.user ? req.user.name : 'Not logged in');
   if (req.user) {
     res.json({

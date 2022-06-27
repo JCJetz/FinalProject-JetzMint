@@ -17,9 +17,21 @@ function WrongNetwork () {
       blockExplorerUrls: ["https://mumbai.polygonscan.com"]
     };  
 
+    const PolygonMainnetNetworkParams = {
+      chainId: "0x89",
+      chainName: "Polygon Mainnet",
+      rpcUrls: ["https://polygon-rpc.com"],
+      nativeCurrency: {
+        name: "MATIC",
+        symbol: "MATIC",
+        decimals: 18,
+      },
+      blockExplorerUrls: ["https://polygonscan.com"]
+    };  
+
     function _handleAddChain (event) {
       event.preventDefault();
-      addChain(PolygonMumbaiNetworkParams);
+      addChain(PolygonMainnetNetworkParams);
     }
 
     return(

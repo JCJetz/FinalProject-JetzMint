@@ -158,14 +158,15 @@ li.login {
   border-bottom: 1px solid #198754 !important;
   margin-bottom: 0 !important;
   /*background: #fff3cd54 none repeat scroll 0% 0%;*/
-  background-color: #e2ffdc57;
+  background-color: #d1fae7a1;
+
 }
 .maintitley{
   padding: 1rem 1.5rem !important;
   border-bottom: 1px solid #ffbbad !important;
   margin-bottom: 0 !important;
   /*background: #fff3cd54 none repeat scroll 0% 0%;*/
-  background-color: #faf5f4;
+  background-color: #fae7d1;
 }
 .no-border {
   border-radius: 0;
@@ -371,7 +372,11 @@ li.login {
 
 .card-footer {
   padding: 0 !important;
-  background-color: #f7efed96;
+  background-color: #faeae7d1;
+}
+
+svg,img{
+  display: inline !important;
 }
 
 /* Info Cards */
@@ -734,10 +739,10 @@ li.login {
   }
 
   .mintear {
-    top: 150px;
+    top: 115px;
   }
   .mintear:before{
-    top:375px;
+    top:350px;
   }
 
   .minteando {
@@ -748,10 +753,10 @@ li.login {
   }
 
   .minteado {
-    top:220px;
+    top:275px;
   }
   .minteado:before{
-    top:392px;
+    top:235px;
   }
 
   .minted {
@@ -786,13 +791,6 @@ li.login {
 }
 
 @media (min-width: 1400px) {
-
-  .mintear:before {
-    top:325px;
-  }
-  .minteado {
-    top:300px;
-  }
 
   .minteado:before{
     top:320px;

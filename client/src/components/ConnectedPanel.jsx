@@ -31,18 +31,20 @@ export default function ConnectedPanel (props) {
         }
     }
 
+    let correctclass="correct"
+
+    // chckea si red correcta, setea estado para paneles, y marca color de las letras 
+    // de la red actual (remarca rojo si no es polygon)
     function checkAndSetAsCorrectNetwork() {
-        if (props.chainId === "0x13881") {
+        if (props.chainId === "0x89") {
           console.log('setting network as correct')
           props.setIsCorrectNetwork(true);
         } else {
           console.log('setting network as incorrect')
           props.setIsCorrectNetwork(false);
+          correctclass = "incorrect";
         }
     }
-
-    // color de las letras de la red actual (remarca rojo si no es polygon)
-    const correctclass = props.chainId !== "0x13881" ? "incorrect" : "correct";
     
     useEffect(() => {
     

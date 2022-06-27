@@ -1,10 +1,11 @@
+import './Home.css'
+import Landing from './Landing'
+
 function Home () {
 
-
-
-
     return (
-        <div>HELLO</div>
+        
+        <Landing />
     )
 
 } 

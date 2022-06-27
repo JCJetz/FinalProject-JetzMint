@@ -9,15 +9,13 @@ import 'dotenv/config';
 import cookieSession from "cookie-session";
 import express from 'express';
 const app = express();
-//const port = 4000;
 const port = process.env.PORT || 5000;
 import passport from 'passport';
-// Esto no puedo dividirlo e importarlo
-//import passportSetup from './config/passport-setup.js';
-import session from 'express-session';
+
 import {router as authRoutes} from "./routes/auth-routes.js";
 import mongoose from "mongoose";
 import { MONGODB,SESSION } from "./config/keys.js";
+
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -131,17 +129,6 @@ passport.use(new SlackStrategy({
   }
 ));
 
-/*
-app.use(express.static(path.join(__dirname, '../build')))
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../", "build", 
-  "index.html"))
-    //res.sendFile(path.join(__dirname, '../build'))
-})
-//const buildPath = path.join(__dirname, '..', 'build');
-//app.use(express.static(buildPath));
-*/
-
 app.use(
   cookieSession({
     name: "session",
@@ -158,7 +145,9 @@ app.use(passport.initialize());
 // deserialize cookie from the browser
 app.use(passport.session());
 
-const corsOrigin = process.env.ORIGIN
+// quitar env de aqui y producción !
+//const corsOrigin = process.env.ORIGIN
+
 // set up cors to allow us to accept requests from our client
 app.use(
   cors({
@@ -167,42 +156,22 @@ app.use(
     credentials: true // allow session cookie from browser to pass through
   })
 );
-app.get('/ping', (req, res) => {
-  console.log('ping!');
-  res.send('Pong?');
-});
-
 
 // set up routes
 app.use("/api/auth", authRoutes);
 
 
-// checkeo si logeado en visita a página principal
-const authCheck = (req, res, next) => {
-    if (!req.user) {
-      res.status(401).json({
-        authenticated: false,
-        message: "user has not been authenticated"
-      });
-    } else {
-      next();
-    }
-};
-// if it's already login, send the profile response,
-// otherwise, send a 401 response that the user is not authenticated
-// authCheck before navigating to home page
-app.get("/bootcamp-neoland", authCheck, (req, res) => {
-    res.status(200).json({
-      authenticated: true,
-      message: "user successfully authenticated",
-      user: req.user,
-      cookies: req.cookies
-    });
+app.use("/", express.static("public"));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
+
 
 // static files (build of your frontend)
 
 if (process.env.NODE_ENV === "production") {
+
   logger.info("SERVING IN PRODUCTION"); 
   
   const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -223,13 +192,13 @@ if (process.env.NODE_ENV !== "production") {
   };
 
   https.createServer(options, app).listen(port, () => {
-    console.log('Https API listening on port ' + port);
+    console.log('DEV Https API listening on port ' + port);
   });
 
 } else {
 
   app.listen(process.env.PORT, function () {
-    console.log('api listening on port: ' + port);
+    console.log('PRODUCTION API listening on port: ' + port);
   });
 
 }

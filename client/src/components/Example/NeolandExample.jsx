@@ -44,8 +44,8 @@ function NeolandExample() {
 
     //const authAPI = process.env.REACT_APP_AUTH_API_URL;
     // Mandamos oauth de slack al backend
-    console.log('Trying to fetch from backend..');
-    fetch("/api/auth/login/success", {
+    console.log('Fetching user from backend..');
+    fetch("/api/auth/login/status", {
       method: "GET",
       credentials: "include",
       headers: {
@@ -68,8 +68,6 @@ function NeolandExample() {
     .then(responseJson => {
         // respuesta en json, seteamos estado como 'authentificated' y estado del mint añadido desde backend
         console.log('User desde fetch: ',responseJson.user);
-        //let newItems = [{authenticated: true, user: responseJson.user}]
-        //setUserstate(prevItems => [...prevItems, ...{authenticated: true, user: responseJson.user}]);
         setUserstate({...userstate, authenticated: true, user: responseJson.user});
         responseJson.user.isMinting ? setIsMinting(true) : setIsMinting(false);
         if (responseJson.user.nftData?.metadata) {
@@ -117,22 +115,19 @@ function NeolandExample() {
     //const nft = await checkMintedNft(tx);
     //console.log('NFT status recibido en front: ', nft)
   }
-  const infoPanelRef = useRef();
 
   // Scrollear con el infopanel si está muy abajo
+  const infoPanelRef = useRef();
   if (infoPanelRef.current && (isConnected || isCorrectNetwork || isMinting || mintData.nft)) {
-    //console.log('InfoPanelRef: ', infoPanelRef.current)
     infoPanelRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
-  // Navbar fija no me va bootstrap;
-
+  // Navbar fija, no me va bootstrap //
+  
   const navbarRef = useRef();
-
   // When the user scrolls the page, execute myFunction
   window.onscroll = function() {myFunction()};
   //var navbar = document.getElementById("navbar");
-
   // Get the offset position of the navbar
   var sticky = navbarRef.current?.offsetTop;
 
@@ -151,7 +146,7 @@ function NeolandExample() {
       <div id="st-container" className="st-container" style={{overflowX: "unset"}}>
         <div className="st-pusher">
           <div className="st-content">
-            <div className="st-content-inner" style={{backgroundColor: "#fff"}}>
+            <div className="st-content-inner" style={{backgroundColor: "#f1f1f1"}}>
               <NavBar navbarRef={navbarRef}/>
               <div className="content">
                 < ProjectBanner />       

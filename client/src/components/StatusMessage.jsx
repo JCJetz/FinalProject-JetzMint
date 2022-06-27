@@ -7,7 +7,7 @@ export default function statusMessage (props) {
     //console.log('renderizando status')
     
     let message = "Valida tu Id de Slack para empezar";
-    let mtype = "warning"
+    let mtype = "warning pinkalert"
     //let icon = "GrValidate"
 
     if (props.userstate?.authenticated && !props.isConnected) {
