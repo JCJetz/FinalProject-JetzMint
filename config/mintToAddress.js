@@ -21,7 +21,7 @@ export default async function mintToAddress (slackid,toAddress) {
     const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
     const metadata = {
-        name: "Bootcamp FrontEnd 2022",
+        name: `NBPOA #${nfts.length+1}`,
         description: "This NFT associates its owner's wallet with a Slack ID, which in turn validates attendance to Neoland's Bootcamp.It is non-transferable, and was made as the bootcamp's final project by JCJetz, with help from x and y.",
         animation_url: fs.readFileSync(path.resolve(__dirname,"../assets/nft_neoland.mp4")), 
         image: fs.readFileSync(path.resolve(__dirname,"../assets/nft_neoland.gif")), 
