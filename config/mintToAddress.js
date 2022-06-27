@@ -36,14 +36,16 @@ export default async function mintToAddress (slackid,toAddress) {
               }]
     }
 
+    /* Para 1155 /
     const metadataWithSupply = {
         metadata,
         supply: 1, // The number of this NFT you want to mint
     };
-
-    console.log('Matadata completo: ', metadataWithSupply);
+    */
     
-    const tx = await contract.mintTo(toAddress, metadataWithSupply);
+    console.log('Matadata completo: ', metadata);
+    
+    const tx = await contract.mintTo(toAddress, metadata);
     const receipt = tx.receipt; // the transaction receipt
     console.log('Tx transacción: ', receipt);
     const tokenId = tx.id; // the id of the NFT minted
