@@ -10,7 +10,7 @@ export default function MintResponse (props) {
     const hex = props.nft.metadata.id.hex ? props.nft.metadata.id.hex : props.nft.metadata.id._hex
     const editionNum = parseInt(hex, 16);
 
-    const contrato = "0x217DaFaAE1CAdFb53A50dc026bA3A8c312662eC6";
+    const contrato = "0xBfA5dBd2e1A0cBBF2Fbc1ddcF46db2A5447d25CA";
     
     // CONTRACT! (THIRDWEB)
     const opensea_url = `https://opensea.io/assets/matic/${contrato}/${editionNum}`
