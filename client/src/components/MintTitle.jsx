@@ -5,7 +5,8 @@ export default function MintTitle (props) {
     let title = "maintitle"
     let button = "success"
     let secondarytext = "warning"
-    if (props.userstate?.user?.alreadyMinted) {title="maintitley"; mtype="danger"; text="no disponible", button="secondary", secondarytext = "dark"}
+    let badge = "alertbadge"
+    if (props.userstate?.user?.alreadyMinted) {title="maintitley"; mtype="danger"; text="no disponible", button="secondary", secondarytext = "dark", badge = "alertbadgey"}
     
     return (
         <>
@@ -29,13 +30,13 @@ export default function MintTitle (props) {
                     <div className="row">
                         <span style={{borderRadius:"6px",padding:"5px",marginBottom: "4px"}} className={`alert alert-${button}`}>
                             <span className="badgetext">Precio:</span>
-                            <span className="alertbadge">0 Ξ</span>
+                            <span className={`${badge}`}>0 Ξ</span>
                         </span>  
                     </div>
                     <div className="row">
                         <span style={{borderRadius:"6px",padding:"5px"}} className={`alert alert-${button}`}>
                             <span className="badgetext">Edición:</span>
-                            <span className="alertbadge">100 Uds.</span>
+                            <span className={`${badge}`}>100 Uds.</span>
                         </span>
                     </div>
                 </div>

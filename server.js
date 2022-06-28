@@ -161,11 +161,19 @@ app.use(
 app.use("/api/auth", authRoutes);
 
 
-app.use("/", express.static("public"));
+app.use(express.static("public"));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
+
+app.use(express.static("client/build"))
+
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  
+  app.get("/neoland-bootcamp", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+})
 
 
 // static files (build of your frontend)

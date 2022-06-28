@@ -11,12 +11,10 @@ export const AppRouter = () => {
   return (
     <Router>
       <Routes>
-
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/neoland-bootcamp" element={<Main />}></Route>
           {/*
-          <Route path="/" onEnter={reload} />
+          <Route path="/" element={<Home />}></Route>
           */}
+          <Route path="/neoland-bootcamp" element={<Main />}></Route>
       </Routes>
     </Router>
   );
