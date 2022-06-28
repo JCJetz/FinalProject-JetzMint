@@ -753,8 +753,12 @@ svg,img{
   } 
 
   .metamask {
-    top:150px !important;
+    top:125px;
   }   
+
+  .metamask:before {
+    top:285px;
+  }
 
   .polygon {
     top:235px;
@@ -778,18 +782,14 @@ svg,img{
   }
 
   .minteado {
-    top:275px;
+    top:330px;
   }
   .minteado:before{
-    top:235px;
+    top:300px;
   }
 
   .minted {
     font-size:17px;
-  }
-
-  .metamask:before {
-    top:260px;
   }
 
   .btn-slack {

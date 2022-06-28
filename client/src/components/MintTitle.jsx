@@ -7,7 +7,7 @@ export default function MintTitle (props) {
     let secondarytext = "warning"
     let badge = "alertbadge"
     let heading = "heading"
-    if (props.userstate?.user?.alreadyMinted) {title="maintitley"; mtype="white"; text="no disponible", button="secondary", secondarytext = "dark", badge = "alertbadgey", heading="mainheading"}
+    if (props.userstate?.user?.alreadyMinted) {title="maintitley"; mtype="white"; text="no disponible", button="secondary", secondarytext = "warning", badge = "alertbadgey", heading="mainheading"}
     
     return (
         <>

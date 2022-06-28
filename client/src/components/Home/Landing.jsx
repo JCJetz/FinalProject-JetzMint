@@ -1,9 +1,9 @@
 import NavBar from "../NavBar";
 import './Home.css';
 
-import "./assets/css/animate.min.css?v=2.0"
-import "./assets/css/slick.css?v=2.0"
-import "./assets/css/tailwind-built.css?v=2.0"
+//import "./assets/css/animate.min.css?v=2.0"
+//import "./assets/css/slick.css?v=2.0"
+//import "./assets/css/tailwind-built.css?v=2.0"
 
 export default function Landing () {
 

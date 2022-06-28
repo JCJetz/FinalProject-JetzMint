@@ -61,7 +61,7 @@ export default function InfoPanels (props) {
         , {cardtype:"mintear",
             header:"Ya puedes mintear tu NFT!",
             title:"No recibirás un NFT cualquiera. Estas son algunas de sus peculiaridades.", 
-            text:['"Soulbound": El token resultante no es especulativo (no transferible)','"Proof of Attendance": Enlaza tu actividad a tu billetera de forma anónima (utilizando únicamente tu id de Slack).','"Gasless": Si conocs o has utilizado Metamask/Ethereum, sabrás que cualquier transacción requiere pagar una tasa (gas), JETZMINT utiliza mint delegado para una experiencia de onboarding fluída.'],
+            text:['Soulbound": El token resultante no es especulativo (no transferible)','"Proof of Attendance": Enlaza tu actividad a tu billetera de forma anónima (utilizando únicamente tu id de Slack).','"Gasless": Si conoces o has utilizado Metamask/Ethereum, sabrás que cualquier transacción requiere pagar una tasa (gas), JETZMINT utiliza mint delegado para una experiencia de onboarding fluída.'],
             extratext:"Más infomación sobre Soulbound y POAP."}
 
         , {cardtype:"minteando",
@@ -73,7 +73,7 @@ export default function InfoPanels (props) {
         , {cardtype:"minteado",
             header:`Transacción completada. Tienes el NFT ${nftnum} de 100`,
             title:"Tu NFT aparecerá automáticamente en tu billetera y en Opensea", 
-            text:['El NFT incluirá tu ID alfanumérico de Slack como único detalle identificativo','También incluirá la numeración de tu NFT dentro de los 100 disponibles','No podrás venderlo ni transferirlo. Tu NFT no es especulativo, así que aunque el diseño es precioso, no podrás venderlo. Representa una actividad, y puede darte acceso a comunidades, descuentos, oportunidades, eventos.. dentro o fuera de la Web3.'],
+            text:['Tu nuevo NFT se ha transferido exitosamnte a tu billetera.','Puedes verlo en Opensea clickando el enlace, aunque tal vez tarde unos minutos en ser indexado.','Accede con él a nuestra zona de usuarios para acceder a las funciones de firma, participar en la comunidadad y recibir promociones asociadas.','Bienvenido a la WEB3.'],
             extratext:"Más infomación sobre el mint delegado y los contratos compartidos de thirdweb."}
     ]
 
