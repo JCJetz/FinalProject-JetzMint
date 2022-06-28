@@ -160,7 +160,8 @@ app.use(
 // set up routes
 app.use("/api/auth", authRoutes);
 
-
+// Tanto en production como development, servir / desde node (landing estática HTML5)
+// * Rompe entorno dev pero funciona en prod, test con caché de /build (client$node run build) en puerto 5000
 app.use(express.static("public"));
 
 app.get('/', function(req, res) {

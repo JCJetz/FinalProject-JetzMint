@@ -6,7 +6,8 @@ export default function MintTitle (props) {
     let button = "success"
     let secondarytext = "warning"
     let badge = "alertbadge"
-    if (props.userstate?.user?.alreadyMinted) {title="maintitley"; mtype="danger"; text="no disponible", button="secondary", secondarytext = "dark", badge = "alertbadgey"}
+    let heading = "heading"
+    if (props.userstate?.user?.alreadyMinted) {title="maintitley"; mtype="white"; text="no disponible", button="secondary", secondarytext = "dark", badge = "alertbadgey", heading="mainheading"}
     
     return (
         <>
@@ -14,13 +15,13 @@ export default function MintTitle (props) {
             <div className="row align-items-center mx-n3">
                 <div className="col-xl-9 col-lg-8">
                     <div  style={{position: "absolute", top: "22px"}}>
-                        <div className="heading heading-3 mb-2 d-block">
+                        <div className={`${heading} heading-3 mb-2 d-block`}>
                             NFT<span className={`text-${mtype}`}> {text}</span>
                         </div>
-                        <div className="heading heading-7 d-block">
+                        <div className={`${heading} heading-7 d-block`}>
                             Emisor: <span className={`text-${secondarytext}`}> NEOLAND</span>
                         </div>
-                        <div className="heading heading-7 d-block">
+                        <div className={`${heading} heading-7 d-block`}>
                             Activo hasta: <span className={`text-${secondarytext}`}> 1/1/2025</span>
                         </div>
                     </div>

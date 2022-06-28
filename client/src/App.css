@@ -166,8 +166,17 @@ li.login {
   border-bottom: 1px solid #f8bf54 !important;
   margin-bottom: 0 !important;
   /*background: #fff3cd54 none repeat scroll 0% 0%;*/
-  background-color: #fffbef;
+  background-color: #e07059f2;
 }
+
+.mainheading{
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0 6px;
+  padding: 0;
+  text-transform: none;
+}
+
 .no-border {
   border-radius: 0;
 }
