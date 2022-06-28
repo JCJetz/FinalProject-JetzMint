@@ -125,7 +125,7 @@ router.get('/slack', passport.authenticate('Slack'));
 
 router.get('/slack/redirect',
   passport.authenticate('Slack', { failureRedirect: '/login/failed', successRedirect: CLIENT_HOME_PAGE_URL }),
-  (req, res) => res.redirect('/login/success') // Successful authentication, redirect home.
+  (req, res) => res.redirect(CLIENT_HOME_PAGE_URL) // Successful authentication, redirect home.
 );
 
 //module.exports = router;
