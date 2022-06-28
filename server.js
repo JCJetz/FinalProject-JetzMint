@@ -160,7 +160,7 @@ app.use(
 // set up routes
 app.use("/api/auth", authRoutes);
 
-// Tanto en production como development, servir / desde node (landing estática HTML5)
+// Tanto en production como development, servir '/' (página principal) desde node (landing estática HTML5)
 // * Rompe entorno dev pero funciona en prod, test con caché de /build (client$node run build) en puerto 5000
 app.use(express.static("public"));
 
@@ -177,7 +177,8 @@ app.use(express.static("client/build"))
 })
 
 
-// static files (build of your frontend)
+/* archivos estáticos build React producción
+/* no hace falta, siempre en simulación de producción
 
 if (process.env.NODE_ENV === "production") {
 
@@ -192,6 +193,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname + "/client/build/index.html"));
   })
 }
+*/
 
 if (process.env.NODE_ENV !== "production") {
 
