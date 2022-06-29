@@ -34,7 +34,7 @@ export default function InfoPanels (props) {
 
     if (props.authenticated && props.mintData.nft) {
         let hex = null;
-        hex = props?.mintData?.nft?.metadata?.id?._hex ? props?.mintData?.nft?.metadata?.id?._hex : props?.nft?.metadata?.id?.hex
+        hex = props?.mintData?.nft?.metadata?.id?._hex ? props?.mintData?.nft?.metadata?.id?._hex : props?.mintData?.nft?.metadata?.id?.hex
         console.log('hex: ',hex);
         nftnum = hex ? parseInt(hex, 16)+1 : nftnum
     }
