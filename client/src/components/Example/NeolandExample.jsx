@@ -1,15 +1,12 @@
 import { useEffect,useState } from "react";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/css/boomerang.min.css';
-//import 'font-awesome/css/font-awesome.min.css';
 
 import SlackOauth from "../SlackOauth";
 import LoadingWheel from "../LoadingWheel";
 import '../../App.css';
 import sendEthAddressAndMint from '../../utils/sendEthAddressAndMint.js'
-//import LeftPanel from "./LeftPanel";
 import ConnectMM from "../ConnectMM/ConnectMM";
-//import checkMintedNft from "../../utils/checkMintedNft.js";
 
 
 import NavBar from "../NavBar";
@@ -42,8 +39,8 @@ function NeolandExample() {
 
   useEffect(() => {
 
-    //const authAPI = process.env.REACT_APP_AUTH_API_URL;
-    // Mandamos oauth de slack al backend
+    // Pedimos estado del usuario al backend 
+    // (envia credenciales y comprueba si existe usuario?)
     console.log('Fetching user from backend..');
     fetch("/api/auth/login/status", {
       method: "GET",
@@ -59,26 +56,25 @@ function NeolandExample() {
         console.log('Response: ', response);
         if (response.status === 200) return response.json();
         if (response.status === 401) {
-          console.log('error 401 from backend');
           setHasLoaded(true);
-          throw new Error("failed to authenticate user");
+          throw new Error("el usuario no pudo ser autentificado");
         }
         
     })
     .then(responseJson => {
-        // respuesta en json, seteamos estado como 'authentificated' y estado del mint añadido desde backend
+        // respuesta en json, 
         console.log('User desde fetch: ',responseJson.user);
+        // establecemos estado de userstate como 'authentificated',
         setUserstate({...userstate, authenticated: true, user: responseJson.user});
+        // estado del mint añadido desde backend (si existe)
         responseJson.user.isMinting ? setIsMinting(true) : setIsMinting(false);
         if (responseJson.user.nftData?.metadata) {
-          console.log('Setting mintdata: ', responseJson.user.nftData);
           setMintData({nft: responseJson.user.nftData});
-          
         }
+        // estado para loading wheel
         setHasLoaded(true);
     })
     .catch(error => {
-        //console.log('fetch error: ', error)
         // Oauth fallida, seteando como no authed
         setUserstate({
           authenticated: false,
@@ -87,8 +83,6 @@ function NeolandExample() {
         setHasLoaded(true);
     });
   },[]);
-
-  
 
   // TEST. Cambios estado userstate
   useEffect(() => {
@@ -111,9 +105,6 @@ function NeolandExample() {
     setUserstate({...userstate, isMinting: true});
     setIsMinting(true);
     const tx = await sendEthAddressAndMint(ethAddress,setUserstate,userstate,setMintData,setIsMinting);
-    //console.log('Tx', tx);
-    //const nft = await checkMintedNft(tx);
-    //console.log('NFT status recibido en front: ', nft)
   }
 
   // Scrollear con el infopanel si está muy abajo
@@ -122,8 +113,7 @@ function NeolandExample() {
     infoPanelRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
-  // Navbar fija, no me va bootstrap //
-  
+  // Navbar fija, no me va con bootstrap //
   const navbarRef = useRef();
   // When the user scrolls the page, execute myFunction
   window.onscroll = function() {myFunction()};
@@ -150,7 +140,7 @@ function NeolandExample() {
               <NavBar navbarRef={navbarRef}/>
               <div className="content">
                 < ProjectBanner />       
-                <section className="slice sct-color-2 border-bottom" style={{backgroundColor: "#f1f1f1", boxShadow: "rgb(0 0 0 / 13%) 0px 4px 32px 10px"}}>
+                <section className="slice sct-color-2" style={{backgroundColor: "rgb(250, 245, 244)", boxShadow: "rgba(0, 0, 0, 0.17) 0px 1px 32px 6px"}}>
                   <div className="container container-over-top">
                     <div className="row">
                       <div className="col-lg-6 ml-lg-auto mb-5">

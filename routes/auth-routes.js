@@ -23,7 +23,7 @@ router.get("/login/status", (req, res) => {
   if (req.user) {
     res.json({
       success: true,
-      message: "user has successfully authenticated",
+      message: "usuario autentificado con éxito",
       user: req.user,
       cookies: req.cookies
     });
@@ -31,7 +31,7 @@ router.get("/login/status", (req, res) => {
     console.log('401 desde backend');
     res.status(401).json({
       success: false,
-      message: "user didn't authenticate successfully",
+      message: "no se pudo autentificar al usuario",
       cookies: req.cookies
     });
   }
