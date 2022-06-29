@@ -472,10 +472,15 @@ object {
  *
  * https://github.com/mozdevs/cssremedy/issues/14
  */
-img,
-video {
-  max-width: 100%;
-  height: auto;
+ img,
+ video {
+   max-width: 100%;
+   height: auto;
+ }
+ 
+.jetzimage {
+  max-width: 80%;
+  display:unset;
 }
 /**
  * Ensure the default browser behavior of the `hidden` attribute.

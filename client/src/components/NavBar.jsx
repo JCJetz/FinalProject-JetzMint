@@ -7,13 +7,6 @@ export default function NavBar (props) {
                 <img src={require(`../assets/MainLogo.png`)} height="30" className="d-none d-lg-inline-block" style={{height:"30px"}} alt="JETZMINT"></img>
                 <img src={require(`../assets/MainLogo.png`)} height="30" className="d-lg-none" alt="JETZMINT"></img>
             </a>
-            {props.isHome &&
-            <div class="navbar" id="navbarText">
-                <span class="navbar-text">
-                    <a class="btn btn-outline-success" href="/neoland-bootcamp" role="button">LAUNCH APP</a>
-                </span>
-            </div>
-            }
         </nav>
     )
 }
